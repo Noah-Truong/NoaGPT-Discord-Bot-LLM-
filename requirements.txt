@@ -1,0 +1,24 @@
+torch>=2.0.0
+torchvision>=0.15.0
+
+"""
+#Usage
+1. **Setup:**
+   ```bash
+   pip install -r requirements.txt
+   mkdir data checkpoints
+   ```
+
+2. **Add training data:**
+   Put your text file in `data/training_data.txt`
+
+3. **Train:**
+   ```bash
+   python train.py
+   ```
+
+4. **Generate:**
+   ```bash
+   python generate.py
+   ```
+"""
