@@ -165,7 +165,7 @@ def preview_cleaned_data(file_path, num_samples=5):
 
 if __name__ == "__main__":
     # Clean the data
-    input_file = Config.DATA_PATH
+    input_file = Config.RAW_DATA
     output_file = 'data/training_data_cleaned.txt'
     
     print("Starting data cleaning...")

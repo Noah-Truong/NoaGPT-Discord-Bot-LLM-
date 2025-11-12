@@ -2,7 +2,7 @@ import torch
 import torch.nn as nn
 from torch.utils.data import DataLoader
 from model import SimpleLLM
-from tokenizer import BPETokenizer  # Changed to BPE!
+from tokenizer import WordTokenizer  # Changed from BPETokenizer
 from dataset import TextDataset
 from config import Config
 import os
@@ -73,10 +73,10 @@ if __name__ == "__main__":
     print("Loading training data...")
     print("=" * 50)
     
-    data_file = 'data/training_data_mixed.txt'
+    data_file = Config.MOTHERLOAD_DATA_PATH
     if not os.path.exists(data_file):
         print(f"Error: {data_file} not found!")
-        print("Please run discord_data_cleaner.py and data_mixer_script.py first")
+        print("Please run clean_data.py and data_mixer.py first")
         exit(1)
     
     with open(data_file, 'r', encoding='utf-8') as f:
@@ -85,11 +85,11 @@ if __name__ == "__main__":
     print(f"Loaded {len(training_text):,} characters")
     print(f"Approximately {len(training_text.split()):,} words\n")
     
-    # Initialize BPE tokenizer
+    # Initialize Word tokenizer
     print("=" * 50)
-    print("Creating BPE Tokenizer (this may take a minute)...")
+    print("Creating Word Tokenizer...")
     print("=" * 50)
-    tokenizer = BPETokenizer(training_text, vocab_size=5000, min_frequency=2)
+    tokenizer = WordTokenizer(training_text, max_vocab_size=10000)  # Using WordTokenizer
     print()
     
     # Test tokenization

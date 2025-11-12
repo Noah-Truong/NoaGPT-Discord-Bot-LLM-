@@ -4,7 +4,7 @@ from model import SimpleLLM
 from tokenizer import WordTokenizer # Changed from CharTokenizer
 from config import Config
 
-def generate_text(model, tokenizer, start_text, max_length=50, temperature=0.8, device='cpu'):
+def generate_text(model, tokenizer, start_text, max_length=50, temperature=1.5, device='cpu'):
     """Generate text from prompt"""
     model.eval()
     tokens = tokenizer.encode(start_text)
@@ -86,7 +86,7 @@ if __name__ == "__main__":
             prompt = "hello"
         
         # Ask for temperature
-        temp_input = input("Temperature (0.5-1.5, default 0.8): ").strip()
+        temp_input = input("Temperature (0.5-1.5, default 1.5): ").strip()
         try:
             temperature = float(temp_input) if temp_input else 0.8
         except:

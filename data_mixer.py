@@ -242,7 +242,12 @@ def create_fallback_quality_text(output_file):
 if __name__ == "__main__":
     # Configuration
     discord_file = 'data/training_data_cleaned.txt'
-    output_file = 'data/training_data_mixed.txt'
+    mixed_data_index = 0
+    output_file = 'mixed_data/training_data_mixed.txt'
+    while os.path.exists(output_file):
+        mixed_data_index += 1
+        output_file = f'mixed_data/training_data_mixed_MK{mixed_data_index}.txt'
+
     discord_ratio = 0.3  # 30% Discord, 70% quality text
     
     print("Discord Data Mixer")
